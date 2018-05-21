@@ -22,7 +22,11 @@ PIXI.loader.add([
 ]).load(init);
 
 function init() {
-    renderer.backgroundImage =  "../bin/assets/bg-far.png";
+    var farTexture = PIXI.Texture.fromImage("assets/bg-far.png");
+    far = new PIXI.Sprite(farTexture);
+    far.position.x = 0;
+    far.position.y = 0;
+    stage.addChild(far);
 
     enemyController = new EnemyController();
     player = new Player();

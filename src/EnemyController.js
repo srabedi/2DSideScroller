@@ -21,20 +21,25 @@ class EnemyController {
             "assets/venom.png",
             "assets/carnage.png",
             "assets/octavius.png",
-            "assets/greenGoblin.png"
+            "assets/greenGoblin.png",
+            "assets/spiderVenomized.png"
         ];
+
+        this.counter = 0;
 
 
         window.setInterval(function() {
             // console.log(this.enemySpriteNameList.pop());
             // console.log(enemy);
 
-            this.enemy = new PIXI.Sprite(PIXI.Texture.fromImage(this.enemySpriteNameList.pop()));
-            this.enemy.anchor.set(0, 0);
-            this.enemy.position.set(renderer.width * 1.3, renderer.height * Math.random());
-            this.enemy.speed = 5;
+            this.enemy = new PIXI.Sprite(PIXI.Texture.fromImage(this.enemySpriteNameList[this.counter % this.enemySpriteNameList.length]));
+            this.counter++;
 
-            stage.addChildAt(this.enemy, 0);
+            this.enemy.anchor.set(0, 0);
+            this.enemy.position.set(renderer.width * 1.3, Math.abs(renderer.height * Math.random() - 200));
+            this.enemy.speed = 10;
+
+            stage.addChildAt(this.enemy, 1);
             this.enemyList.push(this.enemy);
 
         }.bind(this), 4000);
