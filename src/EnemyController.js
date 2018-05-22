@@ -22,7 +22,8 @@ class EnemyController {
             "assets/carnage.png",
             "assets/octavius.png",
             "assets/greenGoblin.png",
-            "assets/spiderVenomized.png"
+            "assets/spiderVenomized.png",
+            "assets/hatcher.png"
         ];
 
         this.counter = 0;
