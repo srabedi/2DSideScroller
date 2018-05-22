@@ -42,27 +42,23 @@ function loop() {
     enemyController.update();
 
     WebProjectile.list.map((element) => {
+        // check if element not null
         element.update();
 
 
         // check for collision between any web and enemy
         enemyController.enemyList.forEach(function (enemyInList, index, array) {
+            // Using Bump.js for its hit method, returns boolean when sprites collide
             if (bump.hit(element.sprite, enemyInList)) {
                 element.sprite.destroy();
                 WebProjectile.list.splice(WebProjectile.list.indexOf(this), 1);
 
                 enemyInList.destroy();
-                array.splice(0, 1);
+                array.splice(index, 1);
             }
         });
-
-
-
     });
 
-
-
-    // check for any collisions between web and enemy
 
     requestAnimationFrame(loop);
     renderer.render(stage);

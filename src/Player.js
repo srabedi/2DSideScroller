@@ -117,7 +117,7 @@ class Player {
         }
 
         // logic for up and down buttons -
-        // if up and not down, else if down and not up, else no button being pressed
+        // if up and not right, else if down and not up, else no button being pressed
         if (!this.keyState[38] && this.keyState[40]) {
             this.directionY = this.keyCodes[40];
         } else if (this.keyState[38] && !this.keyState[40]) {
