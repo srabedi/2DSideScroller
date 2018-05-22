@@ -42,7 +42,7 @@ class EnemyController {
             stage.addChildAt(this.enemy, 1);
             this.enemyList.push(this.enemy);
 
-        }.bind(this), 4000);
+        }.bind(this), 1500);
 
     }
 

@@ -5,6 +5,7 @@
 var stage = new PIXI.Container();
 var player;
 var enemyController;
+bump = new Bump(PIXI);
 
 // add assets into PIXI
 PIXI.loader.add([
@@ -37,16 +38,34 @@ function init() {
 
 function loop() {
 
-    enemyController.update();
     player.update();
+    enemyController.update();
 
     WebProjectile.list.map((element) => {
         element.update();
+
+
+        // check for collision between any web and enemy
+        enemyController.enemyList.forEach(function (enemyInList, index, array) {
+            if (bump.hit(element.sprite, enemyInList)) {
+                element.sprite.destroy();
+                WebProjectile.list.splice(WebProjectile.list.indexOf(this), 1);
+
+                enemyInList.destroy();
+                array.splice(0, 1);
+            }
+        });
+
+
+
     });
+
+
+
+    // check for any collisions between web and enemy
 
     requestAnimationFrame(loop);
     renderer.render(stage);
 
-    // check for any collisions between web and enemy
 
 }

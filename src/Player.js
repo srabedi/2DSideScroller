@@ -106,6 +106,8 @@ class Player {
     onKeyUp(key) {
         this.keyState[key.keyCode] = false;
 
+        // logic for left and right buttons -
+        // if left and not right, else if right and not left, else no button being pressed
         if (!this.keyState[37] && this.keyState[39]) {
             this.directionX = this.keyCodes[39];
         } else if (this.keyState[37] && !this.keyState[39]) {
@@ -114,6 +116,8 @@ class Player {
             this.directionX = 0;
         }
 
+        // logic for up and down buttons -
+        // if up and not down, else if down and not up, else no button being pressed
         if (!this.keyState[38] && this.keyState[40]) {
             this.directionY = this.keyCodes[40];
         } else if (this.keyState[38] && !this.keyState[40]) {
